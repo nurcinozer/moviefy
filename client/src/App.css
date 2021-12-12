@@ -70,7 +70,7 @@
   padding: 2%;
   background-color: var(--white);
 }
-.preamble::before {
+.login-area::before {
   position: fixed;
   left: 1%;
   top: 60%;
@@ -78,7 +78,7 @@
   padding: 2%;
   background-color: var(--white);
 }
-.preamble::after {
+.login-area::after {
   position: fixed;
   right: 1%;
   top: 60%;
@@ -143,11 +143,8 @@ header,
 .summary {
   border-radius: 0 0 20px 20px;
 }
-.preamble,
-.explanation,
-.participation,
-.benefits,
-.requirements {
+.login-area,
+.explanation {
   background-color: var(--white);
   border-radius: var(--border-radius-pill);
   padding: 10px;

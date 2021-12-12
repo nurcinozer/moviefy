@@ -34,21 +34,21 @@ function App() {
     <div className="App" id="App">
       <GlobalStyle />
       <div className="page-wrapper">
-        <section className="intro" id="zen-intro">
+        <section className="intro">
           <header role="banner">
             <a href="/">
               <img src={logo} className="logo" alt="logo" />
             </a>
           </header>
 
-          <div className="summary" id="zen-summary" role="article">
+          <div className="summary">
             <p>
               This website will create a movie soundtrack album cover using your
               most listened tracks on Spotify.
             </p>
           </div>
 
-          <div className="preamble" id="zen-preamble" role="article">
+          <div className="login-area">
             {!token ? (
               <>
                 <h3>Let's go!</h3>
@@ -85,8 +85,8 @@ function App() {
           </div>
         </section>
 
-        <div className="main supporting" id="zen-supporting" role="main">
-          <div className="explanation" id="zen-explanation" role="article">
+        <div className="supporting">
+          <div className="explanation">
             <h3>So what is this about?</h3>
             <p>
               Moviefy takes your most listened to Spotify tracks and creates a
