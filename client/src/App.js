@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
 import { accessToken, logout, getCurrentUserProfile } from "./auth";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import styled from "styled-components/macro";
+import { GlobalStyle } from "./styles";
 
-function ScrollToTop() {
-  const { pathName } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathName]);
-  return null;
-}
+import logo from "./moviefy-logo.png";
+
+const StyledLoginButton = styled.a`
+  background-color: green;
+  color: white;
+  padding: 15px 20px 10px 20px;
+  display: inline-block;
+  margin: 20px auto;
+  border-radius: 30px;
+`;
 
 function App() {
   const [token, setToken] = useState(null);
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState(null);
   useEffect(() => {
     setToken(accessToken);
 
@@ -31,38 +31,84 @@ function App() {
     });
   }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        {!token ? (
-          <a className="App-link" href="http://localhost:5000/login">
-            Log into Spotify
-          </a>
-        ) : (
-          <Router>
-            <ScrollToTop />
-            <Switch>
-              <Route path="/top-tracks">
-                <h1>Top Tracks</h1>
-              </Route>
-              <Route path="/">
-                <>
-                  <button onClick={logout}>Log Out</button>
+    <div className="App" id="App">
+      <GlobalStyle />
+      <div className="page-wrapper">
+        <section className="intro" id="zen-intro">
+          <header role="banner">
+            <a href="/">
+              <img src={logo} className="logo" alt="logo" />
+            </a>
+          </header>
 
-                  {profile && (
-                    <div>
-                      <h1>{profile.display_name}</h1>
-                      <p>{profile.followers.total} Followers</p>
-                      {profile.images.length && profile.images[0].url && (
-                        <img src={profile.images[0].url} alt="Avatar" />
+          <div className="summary" id="zen-summary" role="article">
+            <p>
+              This website will create a movie soundtrack album cover using your
+              most listened tracks on Spotify.
+            </p>
+          </div>
+
+          <div className="preamble" id="zen-preamble" role="article">
+            {!token ? (
+              <>
+                <h3>Let's go!</h3>
+                <p>
+                  Are you ready to turn your most listened tracks into a movie
+                  soundtrack album cover?
+                </p>
+                <StyledLoginButton href="http://localhost:5000/login">
+                  LOGIN WITH SPOTIFY
+                </StyledLoginButton>
+              </>
+            ) : (
+              <Router>
+                <Switch>
+                  <Route path="/top-tracks">
+                    <h1>Top Tracks</h1>
+                  </Route>
+                  <Route path="/">
+                    <>
+                      {profile && (
+                        <div>
+                          <h1>{profile.display_name}</h1>
+                          <p>{profile.followers.total} Followers</p>
+                          {profile.images.length && profile.images[0].url && (
+                            <img src={profile.images[0].url} alt="Avatar" />
+                          )}
+                        </div>
                       )}
-                    </div>
-                  )}
-                </>
-              </Route>
-            </Switch>
-          </Router>
-        )}
-      </header>
+                    </>
+                  </Route>
+                </Switch>
+              </Router>
+            )}
+          </div>
+        </section>
+
+        <div className="main supporting" id="zen-supporting" role="main">
+          <div className="explanation" id="zen-explanation" role="article">
+            <h3>So what is this about?</h3>
+            <p>
+              Moviefy takes your most listened to Spotify tracks and creates a
+              movie soundtrack album cover so you can share with your friends.
+            </p>
+            <p>
+              <a href="https://nurcin.co" target="_blank">
+                Nurçin
+              </a>{" "}
+              developed this site using React and Express to play with Spotify
+              API. Also, the album cover art was designed by Yiğithan.
+            </p>
+            <p>
+              User interface of this site developed by{" "}
+              <a href="https://codepen.io/ellie913/pen/ZOXgdk" target="_blank">
+                Ellie
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,38 +1,155 @@
-.App {
+#App {
+  background-color: var(--black);
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#App::before {
+  position: fixed;
+  top: 0;
+  left: 1%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#App::after {
+  position: fixed;
+  top: 0;
+  right: 1%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.page-wrapper::before {
+  position: fixed;
+  top: 15%;
+  left: 1%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
 }
-
-.App-link {
-  color: #61dafb;
+.page-wrapper::after {
+  position: fixed;
+  right: 1%;
+  top: 15%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo {
+  max-width: 390px;
+  width: 100%;
+}
+.intro::before {
+  position: fixed;
+  top: 30%;
+  left: 1%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.intro::after {
+  position: fixed;
+  right: 1%;
+  top: 30%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.summary::before {
+  position: fixed;
+  left: 1%;
+  top: 45%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.summary::after {
+  position: fixed;
+  right: 1%;
+  top: 45%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.preamble::before {
+  position: fixed;
+  left: 1%;
+  top: 60%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.preamble::after {
+  position: fixed;
+  right: 1%;
+  top: 60%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.supporting::before {
+  position: fixed;
+  left: 1%;
+  top: 75%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.supporting::after {
+  position: fixed;
+  right: 1%;
+  top: 75%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.explanation::before {
+  position: fixed;
+  left: 1%;
+  top: 90%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.explanation::after {
+  position: fixed;
+  right: 1%;
+  top: 90%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.participation::before {
+  position: fixed;
+  left: 1%;
+  top: 100%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+.participation::after {
+  position: fixed;
+  right: 1%;
+  top: 100%;
+  content: "";
+  padding: 2%;
+  background-color: var(--white);
+}
+header,
+.summary {
+  background-color: var(--white);
+  padding: 10px;
+  margin: 0 6%;
+}
+.summary {
+  border-radius: 0 0 20px 20px;
+}
+.preamble,
+.explanation,
+.participation,
+.benefits,
+.requirements {
+  background-color: var(--white);
+  border-radius: var(--border-radius-pill);
+  padding: 10px;
+  margin: 5.5% 6% 0 6%;
 }
