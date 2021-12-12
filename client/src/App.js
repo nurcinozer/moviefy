@@ -8,12 +8,29 @@ import { GlobalStyle } from "./styles";
 import logo from "./moviefy-logo.png";
 
 const StyledLoginButton = styled.a`
-  background-color: green;
+  background-color: var(--green);
   color: white;
   padding: 15px 20px 10px 20px;
   display: inline-block;
   margin: 20px auto;
   border-radius: 30px;
+`;
+
+const StyledLogoutBtn = styled.a`
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--white);
+  font-size: var(--fz-sm);
+  font-weight: 700;
+  border-radius: var(--border-radius-pill);
+  z-index: 10;
+  @media (min-width: 768px) {
+    right: var(--spacing-lg);
+  }
+  cursor: pointer;
 `;
 
 function App() {
@@ -61,26 +78,29 @@ function App() {
                 </StyledLoginButton>
               </>
             ) : (
-              <Router>
-                <Switch>
-                  <Route path="/top-tracks">
-                    <h1>Top Tracks</h1>
-                  </Route>
-                  <Route path="/">
-                    <>
-                      {profile && (
-                        <div>
-                          <h1>{profile.display_name}</h1>
-                          <p>{profile.followers.total} Followers</p>
-                          {profile.images.length && profile.images[0].url && (
-                            <img src={profile.images[0].url} alt="Avatar" />
-                          )}
-                        </div>
-                      )}
-                    </>
-                  </Route>
-                </Switch>
-              </Router>
+              <>
+                <StyledLogoutBtn onClick={logout}>Log Out</StyledLogoutBtn>
+                <Router>
+                  <Switch>
+                    <Route path="/top-tracks">
+                      <h1>Top Tracks</h1>
+                    </Route>
+                    <Route path="/">
+                      <>
+                        {profile && (
+                          <div>
+                            <h1>{profile.display_name}</h1>
+                            <p>{profile.followers.total} Followers</p>
+                            {/* {profile.images.length && profile.images[0].url && (
+                              <img src={profile.images[0].url} alt="Avatar" />
+                            )} */}
+                          </div>
+                        )}
+                      </>
+                    </Route>
+                  </Switch>
+                </Router>
+              </>
             )}
           </div>
         </section>
@@ -89,7 +109,7 @@ function App() {
           <div className="explanation">
             <h3>So what is this about?</h3>
             <p>
-              Moviefy takes your most listened to Spotify tracks and creates a
+              Moviefy takes your most listened Spotify tracks and creates a
               movie soundtrack album cover so you can share with your friends.
             </p>
             <p>
