@@ -37,7 +37,7 @@ const StyledLogoutBtn = styled.a`
 const LOGIN_URI =
   process.env.NODE_ENV !== 'production'
     ? 'http://localhost:5000/login'
-    : 'https://shrouded-garden-68393.herokuapp.com/login';
+    : 'https://fierce-plains-34115.herokuapp.com/login';
 
 function App() {
   const [token, setToken] = useState(null);
