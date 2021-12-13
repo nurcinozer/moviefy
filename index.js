@@ -2,12 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const app = express();
-const port = 5000;
+const path = require("path");
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
+const FRONTEND_URI = process.env.FRONTEND_URI;
+const PORT = process.env.PORT || 5000;
+
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+
 app.get("/", (req, res) => {
-  res.send("Done");
+  res.send("Hello");
 });
 
 /**
@@ -31,7 +36,15 @@ app.get("/login", (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  const scope = "user-read-private user-read-email";
+  const scope = [
+    "user-read-private",
+    "user-read-email",
+    "user-top-read",
+    "playlist-read-private",
+    "playlist-read-collaborative",
+    "user-top-read",
+    "user-follow-read",
+  ].join(" ");
 
   const query = {
     client_id: CLIENT_ID,
@@ -64,16 +77,14 @@ app.get("/callback", (req, res) => {
   })
     .then((response) => {
       if (response.status === 200) {
-        console.log(response.data);
         const { refresh_token, access_token, expires_in } = response.data;
-
         const queryParams = new URLSearchParams({
           access_token,
           refresh_token,
           expires_in,
         });
-        console.log("200");
-        res.redirect(`http://localhost:3000/?${queryParams}`);
+
+        res.redirect(`${FRONTEND_URI}/?${queryParams}`);
       } else {
         res.redirect(`/?${JSON.stringify({ error: "invalid_token" })}`);
       }
@@ -108,6 +119,10 @@ app.get("/refresh_token", (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log("listening");
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
 });

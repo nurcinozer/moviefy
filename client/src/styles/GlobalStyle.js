@@ -80,8 +80,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    position: relative;
-    padding: var(--spacing-xxl) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .app {

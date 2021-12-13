@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { accessToken, logout, getCurrentUserProfile } from "./auth";
+import { accessToken, logout } from "./auth";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components/macro";
+import { TopTracks } from "./pages";
 import { GlobalStyle } from "./styles";
 
 import logo from "./moviefy-logo.png";
@@ -35,17 +36,8 @@ const StyledLogoutBtn = styled.a`
 
 function App() {
   const [token, setToken] = useState(null);
-  const [profile, setProfile] = useState(null);
   useEffect(() => {
     setToken(accessToken);
-
-    const fetchData = async () => {
-      const { data } = await getCurrentUserProfile();
-      setProfile(data);
-    };
-    fetchData().catch((err) => {
-      console.error(err);
-    });
   }, []);
   return (
     <div className="App" id="App">
@@ -53,9 +45,7 @@ function App() {
       <div className="page-wrapper">
         <section className="intro">
           <header role="banner">
-            <a href="/">
-              <img src={logo} className="logo" alt="logo" />
-            </a>
+            <img src={logo} className="logo" alt="logo" />
           </header>
 
           <div className="summary">
@@ -82,21 +72,8 @@ function App() {
                 <StyledLogoutBtn onClick={logout}>Log Out</StyledLogoutBtn>
                 <Router>
                   <Switch>
-                    <Route path="/top-tracks">
-                      <h1>Top Tracks</h1>
-                    </Route>
                     <Route path="/">
-                      <>
-                        {profile && (
-                          <div>
-                            <h1>{profile.display_name}</h1>
-                            <p>{profile.followers.total} Followers</p>
-                            {/* {profile.images.length && profile.images[0].url && (
-                              <img src={profile.images[0].url} alt="Avatar" />
-                            )} */}
-                          </div>
-                        )}
-                      </>
+                      <TopTracks />
                     </Route>
                   </Switch>
                 </Router>
@@ -107,7 +84,7 @@ function App() {
 
         <div className="supporting">
           <div className="explanation">
-            <h3>So what is this about?</h3>
+            <h3>What is this about?</h3>
             <p>
               Moviefy takes your most listened Spotify tracks and creates a
               movie soundtrack album cover so you can share with your friends.
@@ -117,12 +94,9 @@ function App() {
                 Nurçin
               </a>{" "}
               developed this site using React and Express to play with Spotify
-              API. Also, the album cover art was designed by Yiğithan.
-            </p>
-            <p>
-              User interface of this site developed by{" "}
-              <a href="https://codepen.io/ellie913/pen/ZOXgdk" target="_blank">
-                Ellie
+              API. Also, the album cover art was designed by{" "}
+              <a href="https://yigityurtseven.github.io/" target="_blank">
+                Yiğithan
               </a>
               .
             </p>
