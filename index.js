@@ -9,7 +9,7 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 const FRONTEND_URI = process.env.FRONTEND_URI;
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static(path.resolve(__dirname, "client/build")));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.get("/", (req, res) => {
   res.send("Hello");
@@ -120,7 +120,7 @@ app.get("/refresh_token", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
 app.listen(PORT, () => {
