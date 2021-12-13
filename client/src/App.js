@@ -34,6 +34,11 @@ const StyledLogoutBtn = styled.a`
   cursor: pointer;
 `;
 
+const LOGIN_URI =
+  process.env.NODE_ENV !== 'production'
+    ? 'http://localhost:5000/login'
+    : 'https://shrouded-garden-68393.herokuapp.com/login';
+
 function App() {
   const [token, setToken] = useState(null);
   useEffect(() => {
@@ -63,7 +68,7 @@ function App() {
                   Are you ready to turn your most listened tracks into a movie
                   soundtrack album cover?
                 </p>
-                <StyledLoginButton href="http://localhost:5000/login">
+                <StyledLoginButton href={LOGIN_URI}>
                   LOGIN WITH SPOTIFY
                 </StyledLoginButton>
               </>
