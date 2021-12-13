@@ -14,9 +14,6 @@ const StyledLoginButton = styled.a`
 
 const params = {
   fileName: "moviefy",
-  html2CanvasOptions: {
-    height: 820,
-  },
 };
 
 const TrackList = ({ tracks, profile }) => {
