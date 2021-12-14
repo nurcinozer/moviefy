@@ -309,7 +309,7 @@ header,
 .track-item {
   vertical-align: middle;
   display: block;
-  color: var(--black);
+  color: var(--black) !important;
 }
 
 .track-num {
