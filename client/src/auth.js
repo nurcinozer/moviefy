@@ -83,7 +83,3 @@ export const getCurrentUserProfile = () => axios.get("/me");
 export const getTopTracks = (time_range = "short_term") => {
   return axios.get(`/me/top/tracks?time_range=${time_range}`);
 };
-
-export const getAudioFeaturesForTracks = (ids) => {
-  return axios.get(`/audio-features?ids=${ids}`);
-};

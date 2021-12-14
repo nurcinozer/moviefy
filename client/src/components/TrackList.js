@@ -19,6 +19,8 @@ const params = {
 const TrackList = ({ tracks, profile }) => {
   const componentRef = React.useRef();
 
+  console.log(tracks);
+
   return (
     <>
       {tracks && tracks.length ? (
@@ -36,7 +38,12 @@ const TrackList = ({ tracks, profile }) => {
                 <div className="track-list">
                   <div className="tracks">
                     {tracks.slice(0, 10).map((track, i) => (
-                      <div className="track-item" key={i}>
+                      <a
+                        className="track-item"
+                        key={i}
+                        href={track.external_urls.spotify}
+                        target="_blank"
+                      >
                         <span className="track-num">{i + 1}.</span>
                         <span className="track__item__name-artist">
                           <span className="track__item__artist overflow-ellipsis">
@@ -52,7 +59,7 @@ const TrackList = ({ tracks, profile }) => {
                             {track.name}
                           </span>
                         </span>
-                      </div>
+                      </a>
                     ))}
                   </div>
                 </div>

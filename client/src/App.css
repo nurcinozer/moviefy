@@ -190,7 +190,6 @@ header,
   }
 }
 
-
 #poster-layout {
   background: var(--white);
   display: flex;
@@ -235,7 +234,6 @@ header,
   }
 }
 
-
 #poster .header-text h3 {
   font-size: 2vw;
   margin: 5px;
@@ -278,7 +276,6 @@ header,
   }
 }
 
-
 .track-list .tracks span {
   display: inline-block;
   margin: 0.2em;
@@ -311,6 +308,8 @@ header,
 
 .track-item {
   vertical-align: middle;
+  display: block;
+  color: var(--black);
 }
 
 .track-num {
