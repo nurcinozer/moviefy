@@ -7,6 +7,7 @@ import { TopTracks } from "./pages";
 import { GlobalStyle } from "./styles";
 
 import logo from "./moviefy-logo.png";
+import icon from "./Spotify_Icon_RGB_White.png";
 
 const StyledLoginButton = styled.a`
   background-color: var(--green);
@@ -69,7 +70,7 @@ function App() {
                   soundtrack album cover?
                 </p>
                 <StyledLoginButton href={LOGIN_URI}>
-                  LOGIN WITH SPOTIFY
+                  <img src={icon} alt="icon" className="icon" /> OPEN SPOTIFY
                 </StyledLoginButton>
               </>
             ) : (

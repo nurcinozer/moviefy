@@ -42,6 +42,9 @@
   max-width: 390px;
   width: 100%;
 }
+.icon {
+  max-width: 21px;
+}
 .intro::before {
   position: fixed;
   top: 30%;

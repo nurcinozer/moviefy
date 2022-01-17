@@ -38,11 +38,9 @@ const TrackList = ({ tracks, profile }) => {
                 <div className="track-list">
                   <div className="tracks">
                     {tracks.slice(0, 10).map((track, i) => (
-                      <a
+                      <div
                         className="track-item"
                         key={i}
-                        href={track.external_urls.spotify}
-                        target="_blank"
                       >
                         <span className="track-num">{i + 1}.</span>
                         <span className="track__item__name-artist">
@@ -59,7 +57,7 @@ const TrackList = ({ tracks, profile }) => {
                             {track.name}
                           </span>
                         </span>
-                      </a>
+                      </div>
                     ))}
                   </div>
                 </div>
